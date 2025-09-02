@@ -11,4 +11,3 @@ app = FastAPI()
 @app.get("/ping")
 def root():
     return {"pong"}
-
