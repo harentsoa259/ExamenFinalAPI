@@ -1,0 +1,75 @@
+openapi: 3.0.3
+info:
+  title: STD24002
+  version: 1.0.0
+
+paths:
+  /cars:
+    get:
+      summary: Liste de voiture
+      responses:
+        '200':
+          description: Liste de voiture
+          content:
+            application/json:
+              schema:
+                type: array
+                example:
+                  - id: 1
+                    Type: "SUV"
+                  - id: 2
+                    title: "Pick-up"
+
+    post:
+      summary: Créer une car
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              example:
+                - title: "Nouvelle voiture"
+      responses:
+        '201':
+          description: Car créées
+          content:
+            application/json:
+              schema:
+                type: array
+                example:
+                  - id: 3
+                    title: "Nouvelle voiture"
+                    completed: false
+
+
+  /tasks/{id}:
+    get:
+      summary: Récupère un car par ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: car trouvée
+          content:
+            application/json:
+              schema:
+               example:
+                id: 1
+                title: "Toyota"
+                completed: false
+        '404':
+          description: Car not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+              example:
+                message: "Car not found"
